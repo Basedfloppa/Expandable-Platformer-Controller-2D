@@ -97,26 +97,29 @@ func _movement_check() -> void:
 		if dashCount > 0 and inputDirection != Vector2.ZERO:
 			match dashType:
 				DashTypes.EIGHTWAY:
-					_do_dash(dashMagnitude * inputDirection, duration)
+					_do_dash(inputDirection.normalized(), duration)
 				DashTypes.FOURWAY:
 					if abs(inputDirection.x) == 1 or abs(inputDirection.y) == 1:
-						_do_dash(dashMagnitude * inputDirection, duration)
+						_do_dash(inputDirection.normalized(), duration)
 				DashTypes.VERTICAL:
 					if abs(inputDirection.y) > 0:
-						_do_dash(dashMagnitude * (Vector2.UP if inputDirection.y < 0 else Vector2.DOWN), duration)
+						_do_dash(Vector2.UP if inputDirection.y < 0 else Vector2.DOWN, duration)
 				DashTypes.HORIZONTAL:
 					if abs(inputDirection.x) > 0:
-						_do_dash(dashMagnitude * (Vector2.LEFT if inputDirection.x < 0 else Vector2.RIGHT), duration)
+						_do_dash(Vector2.LEFT if inputDirection.x < 0 else Vector2.RIGHT, duration)
 	if _get_special_flag("dashing") and dashCancel != DashCancelModes.NONE:
 		_dash_cancel(inputDirection)
+	if _get_special_flag("dashing"):
+			#if you want your player to become immune or do something else while dashing, add that here.
+			pass
 
 ## Dashes.
-func _do_dash(dashSpeed: Vector2, time: float) -> void:
+func _do_dash(dashDirection: Vector2, time: float) -> void:
 	jumpCount = consecutiveJumps + 1
-	lastDashDirection = dashSpeed.normalized()
+	lastDashDirection = dashDirection
 	_special_set_after_time("dashing", false, time, true)
 	_special_set_after_time("appliedValues/gravityActive", true, time, false)
-	parent.velocity = dashSpeed
+	parent.velocity = dashDirection * dashMagnitude
 	dashCount += -1
 	_special_set_after_time("appliedValues/movementInputMonitoring", Vector2.ONE, time, Vector2.ZERO)
 

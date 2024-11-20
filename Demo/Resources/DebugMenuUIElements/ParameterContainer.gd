@@ -34,6 +34,7 @@ func _init(parameter: String, type: ParameterTypes, defaultValue: Variant, extra
 			numericContent.step = extraData.step
 			numericContent.value = defaultValue
 			numericContent.value_changed.connect(value_updated.emit.bind(parameter))
+			numericContent.allow_greater = true
 			add_child(numericContent)
 		ParameterTypes.BOOL:
 			boolContent = CheckButton.new()

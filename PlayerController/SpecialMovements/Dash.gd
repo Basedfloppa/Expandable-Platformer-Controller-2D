@@ -183,3 +183,7 @@ func _get_debug_variables() -> DebugMenuEditor.ParameterCategory:
 		DebugMenuEditor.ParameterContents.new("consecutiveJumpsTimer", DebugParameterContainer.ParameterTypes.NUMERIC, consecutiveJumpsTimer, DebugParameterContainer.NumericData.new(0.01, 5, 0.01))
 	]
 	return category
+
+## What to do when the values are updated through debug.
+func _on_debug_update() -> void:
+	dashMagnitude = parent.maxSpeed * speedMultiplier

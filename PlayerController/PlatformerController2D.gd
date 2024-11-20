@@ -489,3 +489,4 @@ func _debug_update(newValue: Variant, parameter: String, category: String):
 		for movement in specialMovements:
 			if movement.movementName == category:
 				movement.set(parameter, newValue)
+				movement._on_debug_update()

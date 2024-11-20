@@ -116,3 +116,7 @@ func _flip_check() -> bool:
 ## Exports variables for debug testing live.
 func _get_debug_variables() -> DebugMenuEditor.ParameterCategory:
 	return null
+
+## What to do when the values are updated through debug.
+func _on_debug_update() -> void:
+	pass

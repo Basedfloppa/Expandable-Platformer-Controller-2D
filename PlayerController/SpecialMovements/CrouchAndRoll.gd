@@ -106,3 +106,7 @@ func _get_debug_variables() -> DebugMenuEditor.ParameterCategory:
 		DebugMenuEditor.ParameterContents.new("rollSpeedMultiplier", DebugParameterContainer.ParameterTypes.NUMERIC, rollSpeedMultiplier, DebugParameterContainer.NumericData.new(0.1, 10))
 	]
 	return category
+
+## What to do when the values are updated through debug.
+func _on_debug_update() -> void:
+	rollSpeed = parent.maxSpeed * rollSpeedMultiplier

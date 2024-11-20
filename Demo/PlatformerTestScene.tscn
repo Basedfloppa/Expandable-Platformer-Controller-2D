@@ -343,15 +343,15 @@ playerCollider = NodePath("CollisionShape2D")
 debugMenuEditor = NodePath("../CanvasLayer/DebugMenuEditor")
 inputKeys = {
 "crouch": "ui_down",
-"dash": "Button_1",
+"dash": "Button_2",
 "down": "ui_down",
-"groundPound": "Button_2",
-"jump": "ui_select",
-"latch": "Button_2",
+"groundPound": "Button_3",
+"jump": "Button_1",
+"latch": "Button_3",
 "left": "ui_left",
 "right": "ui_right",
-"roll": "Button_1",
-"run": "Button_1",
+"roll": "Button_2",
+"run": "Button_2",
 "up": "ui_up"
 }
 animations = {
@@ -373,13 +373,13 @@ inputleft = "ui_left"
 inputright = "ui_right"
 inputup = "ui_up"
 inputdown = "ui_down"
-inputjump = "ui_select"
-inputrun = "Button_1"
+inputjump = "Button_1"
+inputrun = "Button_2"
 inputcrouch = "ui_down"
-inputroll = "Button_1"
-inputlatch = "Button_2"
-inputgroundPound = "Button_2"
-inputdash = "Button_1"
+inputroll = "Button_2"
+inputlatch = "Button_3"
+inputgroundPound = "Button_3"
+inputdash = "Button_2"
 animationCustomFlip = false
 animationidle = "idle"
 animationwalk = "walk"

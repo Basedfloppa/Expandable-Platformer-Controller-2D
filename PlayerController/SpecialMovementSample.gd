@@ -51,3 +51,7 @@ func _get_debug_variables() -> DebugMenuEditor.ParameterCategory:
 		# Please check other included movement types for more examples of this being used.
 	]
 	return category
+
+## What to do when the values are updated through debug.
+func _on_debug_update() -> void:
+	pass

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ddk8skqtgqcir"]
 
-[ext_resource type="Script" path="res://GodotObjects/GenericUI/Elements/DebugMenuUIElements/DebugMenuEditor.gd" id="1_vlg3x"]
+[ext_resource type="Script" path="res://Demo/Resources/DebugMenuUIElements/DebugMenuEditor.gd" id="1_vlg3x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qptx4"]
 bg_color = Color(0.316823, 0.631115, 0.35243, 1)

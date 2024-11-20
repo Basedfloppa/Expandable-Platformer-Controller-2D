@@ -22,6 +22,8 @@ class_name CrouchAndRoll
 var rollSpeed: float
 ## Player Collider height. Used for transformations.
 var colliderHeight: float
+## Used for keeping track of roll direction
+var lastRollDirection: Vector2
 
 ## Override commands and animations.
 func _set_commands_and_animations() -> void:
@@ -52,29 +54,35 @@ func _get_collider_height() -> void:
 ## Check for crouch or roll events.
 func _movement_check() -> void:
 	# Crouching
-	if parent.commandInputs.down.hold and parent.is_on_floor():
-		_set_special_flag("crouching", true)
-		parent.playerCollider.scale.y = parent.appliedValues.colliderScaleLockY * crouchSizeMultiplier
-		parent.playerCollider.position.y = parent.appliedValues.colliderPosLockY + crouchSizeMultiplier * colliderHeight / 2
-	elif not parent.commandInputs.down.hold or ((parent.commandInputs.run.hold and parent.runningModifier > 1) or parent.runningModifier == 1) and not _get_special_flag("rolling"):
-		_set_special_flag("crouching", false)
-	if not parent.is_on_floor():
-		_set_special_flag("crouching", false)
-	if _get_special_flag("crouching"):
-		parent.maxSpeed = parent.appliedValues.speed * crouchSpeedMultiplier
-	else:
-		parent.playerCollider.scale.y = parent.appliedValues.colliderScaleLockY
-		parent.playerCollider.position.y = parent.appliedValues.colliderPosLockY
+	if not _get_special_flag("rolling"):
+		if parent.commandInputs.down.hold and parent.is_on_floor():
+			_set_special_flag("crouching", true)
+			parent.playerCollider.scale.y = parent.appliedValues.colliderScaleLockY * crouchSizeMultiplier
+			parent.playerCollider.position.y = parent.appliedValues.colliderPosLockY + crouchSizeMultiplier * colliderHeight / 2
+		elif not parent.commandInputs.down.hold or ((parent.commandInputs.run.hold and parent.runningModifier > 1) or parent.runningModifier == 1) and not _get_special_flag("rolling"):
+			_set_special_flag("crouching", false)
+		if not parent.is_on_floor():
+			_set_special_flag("crouching", false)
+		if _get_special_flag("crouching"):
+			parent.maxSpeed = parent.appliedValues.speed * crouchSpeedMultiplier
+		else:
+			parent.playerCollider.scale.y = parent.appliedValues.colliderScaleLockY
+			parent.playerCollider.position.y = parent.appliedValues.colliderPosLockY
 	# Rolling
 	if canRoll:
 		if parent.commandInputs.roll.tap and _get_special_flag("crouching") and (parent.commandInputs.left.hold or parent.commandInputs.right.hold) and not parent.commandInputs.up.hold:
-			_set_special_flag_after_time("rolling", false, rollTime, true)
-			parent.velocity.y = 0
-			parent.velocity.x = rollSpeed * (-1.0 if not parent.appliedValues.wasPressingR else 1.0)
-			parent._set_after_time("appliedValues/movementInputMonitoring", Vector2.ONE, rollTime, Vector2.ZERO)
+			_do_roll()
 		if _get_special_flag("rolling"):
 			#if you want your player to become immune or do something else while rolling, add that here.
 			pass
+
+func _do_roll() -> void:
+	if not _get_special_flag("rolling"):
+		lastRollDirection = Vector2.RIGHT if parent.appliedValues.wasPressingR else Vector2.LEFT
+	_set_special_flag_after_time("rolling", false, rollTime, true)
+	parent.velocity = rollSpeed * lastRollDirection
+	parent._set_after_time("appliedValues/gravityActive", true, rollTime, false)
+	parent._set_after_time("appliedValues/movementInputMonitoring", Vector2.ONE, rollTime, Vector2.ZERO)
 
 ## Checks for corresponding animations.
 func _animation_check() -> void:

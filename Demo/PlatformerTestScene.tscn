@@ -1,23 +1,23 @@
 [gd_scene load_steps=56 format=4 uid="uid://da5f3t4qp7edg"]
 
-[ext_resource type="PackedScene" uid="uid://xrkcynjn0kvm" path="res://GodotObjects/SampleTilesets/Sidescroller2D.tscn" id="1_7kvl1"]
-[ext_resource type="Script" path="res://GodotObjects/PlayerControllers/SidescrollerPlatformer/PlatformerController2D.gd" id="1_hydhc"]
-[ext_resource type="Shader" path="res://GodotObjects/Shaders/CanvasItem/ScrollingTexture/ScrollingTexture.gdshader" id="1_mgwra"]
-[ext_resource type="Script" path="res://GodotObjects/PlayerControllers/SidescrollerPlatformer/SpecialMovementsPlatformer2D.gd" id="2_aks1j"]
-[ext_resource type="Script" path="res://GodotObjects/PlayerControllers/SidescrollerPlatformer/SpecialMovements/Dash.gd" id="3_35cbo"]
-[ext_resource type="Script" path="res://GodotObjects/PlayerControllers/SidescrollerPlatformer/SpecialMovements/CrouchAndRoll.gd" id="4_vu0ct"]
-[ext_resource type="Script" path="res://GodotObjects/PlayerControllers/SidescrollerPlatformer/SpecialMovements/WallJump.gd" id="5_8rkd4"]
-[ext_resource type="Script" path="res://GodotObjects/PlayerControllers/SidescrollerPlatformer/SpecialMovements/GroundPound.gd" id="6_8nymu"]
-[ext_resource type="Script" path="res://GodotObjects/PlayerControllers/SidescrollerPlatformer/SpecialMovements/CornerCutting.gd" id="7_gitng"]
-[ext_resource type="Texture2D" uid="uid://bv4kcc210h5cn" path="res://Assets/Sprites/Placeholder/Characters/Sidescroller/03-Pig/Ground (34x28).png" id="8_xjgsf"]
-[ext_resource type="Texture2D" uid="uid://bc4svhljoshix" path="res://Assets/Sprites/Placeholder/Characters/Sidescroller/03-Pig/Run (34x28).png" id="9_l83l6"]
-[ext_resource type="Texture2D" uid="uid://kw34knvlbb4n" path="res://Assets/Sprites/Placeholder/Characters/Sidescroller/03-Pig/Attack (34x28).png" id="10_kohqm"]
-[ext_resource type="Texture2D" uid="uid://cwy135qylwqmr" path="res://Assets/Sprites/Placeholder/Characters/Sidescroller/03-Pig/Fall (34x28).png" id="11_5nlrc"]
-[ext_resource type="Texture2D" uid="uid://i57qe0k34gs" path="res://Assets/Sprites/Placeholder/Characters/Sidescroller/03-Pig/Idle (34x28).png" id="12_plecx"]
-[ext_resource type="Texture2D" uid="uid://ci8ner3edoii3" path="res://Assets/Sprites/Placeholder/Characters/Sidescroller/03-Pig/Jump (34x28).png" id="13_8ha2t"]
-[ext_resource type="Texture2D" uid="uid://cv8hr731yhd08" path="res://Assets/Sprites/Placeholder/Characters/Sidescroller/03-Pig/Dead (34x28).png" id="14_cb0ic"]
-[ext_resource type="Texture2D" uid="uid://dt0qqbhlvbecb" path="res://Assets/Sprites/Placeholder/Characters/Sidescroller/03-Pig/Hit (34x28).png" id="15_3ct7v"]
-[ext_resource type="PackedScene" uid="uid://ddk8skqtgqcir" path="res://GodotObjects/PlayerControllers/SidescrollerPlatformer/Resources/DebugMenuUIElements/DebugMenuEditor.tscn" id="18_we0mk"]
+[ext_resource type="PackedScene" uid="uid://csq34u11eo2ss" path="res://Demo/Resources/Tileset/Sidescroller2D.tscn" id="1_7kvl1"]
+[ext_resource type="Script" path="res://PlatformerController2D.gd" id="1_hydhc"]
+[ext_resource type="Shader" path="res://Demo/Resources/ScrollingTexture/ScrollingTexture.gdshader" id="1_mgwra"]
+[ext_resource type="Script" path="res://SpecialMovementsPlatformer2D.gd" id="2_aks1j"]
+[ext_resource type="Script" path="res://SpecialMovements/Dash.gd" id="3_35cbo"]
+[ext_resource type="Script" path="res://SpecialMovements/CrouchAndRoll.gd" id="4_vu0ct"]
+[ext_resource type="Script" path="res://SpecialMovements/WallJump.gd" id="5_8rkd4"]
+[ext_resource type="Script" path="res://SpecialMovements/GroundPound.gd" id="6_8nymu"]
+[ext_resource type="Script" path="res://SpecialMovements/CornerCutting.gd" id="7_gitng"]
+[ext_resource type="Texture2D" uid="uid://bv4kcc210h5cn" path="res://Demo/Resources/PlayerSprites/Ground (34x28).png" id="8_xjgsf"]
+[ext_resource type="Texture2D" uid="uid://bc4svhljoshix" path="res://Demo/Resources/PlayerSprites/Run (34x28).png" id="9_l83l6"]
+[ext_resource type="Texture2D" uid="uid://kw34knvlbb4n" path="res://Demo/Resources/PlayerSprites/Attack (34x28).png" id="10_kohqm"]
+[ext_resource type="Texture2D" uid="uid://cwy135qylwqmr" path="res://Demo/Resources/PlayerSprites/Fall (34x28).png" id="11_5nlrc"]
+[ext_resource type="Texture2D" uid="uid://i57qe0k34gs" path="res://Demo/Resources/PlayerSprites/Idle (34x28).png" id="12_plecx"]
+[ext_resource type="Texture2D" uid="uid://ci8ner3edoii3" path="res://Demo/Resources/PlayerSprites/Jump (34x28).png" id="13_8ha2t"]
+[ext_resource type="Texture2D" uid="uid://cv8hr731yhd08" path="res://Demo/Resources/PlayerSprites/Dead (34x28).png" id="14_cb0ic"]
+[ext_resource type="Texture2D" uid="uid://dt0qqbhlvbecb" path="res://Demo/Resources/PlayerSprites/Hit (34x28).png" id="15_3ct7v"]
+[ext_resource type="PackedScene" uid="uid://ddk8skqtgqcir" path="res://Demo/Resources/DebugMenuUIElements/DebugMenuEditor.tscn" id="18_we0mk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w425c"]
 shader = ExtResource("1_mgwra")
@@ -339,18 +339,18 @@ position = Vector2(655, 464)
 script = ExtResource("1_hydhc")
 playerSprite = NodePath("AnimatedSprite2D")
 playerCollider = NodePath("CollisionShape2D")
-debugMenuEditor = NodePath("")
+debugMenuEditor = NodePath("../CanvasLayer/DebugMenuEditor")
 inputKeys = {
 "crouch": "ui_down",
-"dash": "shift",
+"dash": "Button_1",
 "down": "ui_down",
-"groundPound": "z",
+"groundPound": "Button_2",
 "jump": "ui_select",
-"latch": "z",
+"latch": "Button_2",
 "left": "ui_left",
 "right": "ui_right",
-"roll": "shift",
-"run": "shift",
+"roll": "Button_1",
+"run": "Button_1",
 "up": "ui_up"
 }
 animations = {
@@ -373,12 +373,12 @@ inputright = "ui_right"
 inputup = "ui_up"
 inputdown = "ui_down"
 inputjump = "ui_select"
-inputrun = "shift"
+inputrun = "Button_1"
 inputcrouch = "ui_down"
-inputroll = "shift"
-inputlatch = "z"
-inputgroundPound = "z"
-inputdash = "shift"
+inputroll = "Button_1"
+inputlatch = "Button_2"
+inputgroundPound = "Button_2"
+inputdash = "Button_1"
 animationCustomFlip = false
 animationidle = "idle"
 animationwalk = "walk"

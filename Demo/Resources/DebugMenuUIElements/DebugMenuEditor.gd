@@ -11,6 +11,10 @@ signal value_updated(newValue: Variant, parameter: String, category: String)
 @onready var outsideButton: Button = %OutsideButton
 
 var menuList: Array[GridContainer]
+var chevrons: Dictionary = {
+	"up": load("res://Demo/Resources/DebugMenuUIElements/ChevronUp.svg"),
+	"down": load("res://Demo/Resources/DebugMenuUIElements/ChevronDown.svg")
+}
 
 class ParameterContents:
 	var parameter: String
@@ -74,9 +78,9 @@ func set_control_theme(node: Control, styles: Dictionary) -> void:
 
 func _on_show(toggled: bool) -> void:
 	if toggled:
-		showButton.text = "▲"
+		showButton.icon = chevrons.up
 	else:
-		showButton.text = "▼"
+		showButton.icon = chevrons.down
 	mainPanel.visible = toggled
 	buttonsContainer.visible = toggled
 	showButton.release_focus()

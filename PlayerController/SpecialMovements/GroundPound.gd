@@ -72,3 +72,7 @@ func _get_debug_variables() -> DebugMenuEditor.ParameterCategory:
 		DebugMenuEditor.ParameterContents.new("freezeHorizontally", DebugParameterContainer.ParameterTypes.BOOL, freezeHorizontally)
 		]
 	return category
+
+## What to do when the values are updated through debug.
+func _on_debug_update() -> void:
+	_on_update()

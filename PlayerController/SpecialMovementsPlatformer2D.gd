@@ -38,6 +38,10 @@ func _set_special_flag(flag: StringName, value: bool, specialBlocks: PackedStrin
 			parent.specialBlocks[block] = [flag]
 		else:
 			parent.specialBlocks[block].append(flag)
+	if specialBlocks:
+		for block in parent.specialBlocks:
+			if block not in specialBlocks:
+				parent.specialBlocks[block].erase(flag)
 	special_property_change.emit(flag, value)
 
 ## Gets special flags on parent.

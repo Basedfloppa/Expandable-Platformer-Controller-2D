@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ddk8skqtgqcir"]
 
-[ext_resource type="Script" path="res://Demo/Resources/DebugMenuUIElements/DebugMenuEditor.gd" id="1_vlg3x"]
+[ext_resource type="Script" uid="uid://dj4tg6h1dskkg" path="res://Demo/Resources/DebugMenuUIElements/DebugMenuEditor.gd" id="1_vlg3x"]
 [ext_resource type="Texture2D" uid="uid://cnf2jbpr5obn3" path="res://Demo/Resources/DebugMenuUIElements/ChevronDown.svg" id="2_1lg6j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qptx4"]
@@ -71,8 +71,8 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 30)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_constants/icon_max_width = 30
 theme_override_styles/hover = SubResource("StyleBoxFlat_jdtks")

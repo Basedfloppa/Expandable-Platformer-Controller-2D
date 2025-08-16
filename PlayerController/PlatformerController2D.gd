@@ -163,7 +163,7 @@ func _get_property_list() -> Array:
 func _get_commands() -> PackedStringArray:
 	var commands: PackedStringArray = ["left", "right", "up", "down", "jump", "run"]
 	for movement in specialMovements:
-		if movement and movement.has_variable("requiredCommands"):
+		if movement and "requiredCommands" in movement:
 			commands.append_array(movement.requiredCommands)
 	for key in inputKeys.keys():
 		if key not in commands:
@@ -174,7 +174,7 @@ func _get_commands() -> PackedStringArray:
 func _get_animations() -> PackedStringArray:
 	var animationList: PackedStringArray = ["idle", "walk", "jump", "run", "falling"]
 	for movement in specialMovements:
-		if movement and movement.has_variable("requiredAnimations"):
+		if movement and "requiredAnimations" in movement:
 			animationList.append_array(movement.requiredAnimations)
 	if animationCustomFlip:
 		var newAnimations: PackedStringArray = []

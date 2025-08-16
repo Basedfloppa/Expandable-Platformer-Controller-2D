@@ -6,7 +6,10 @@ class_name PlatformerController2D
 ## ALERT Essential child nodes.
 @export_category("Necesary Child Nodes")
 ## The player sprite.
-@export var playerSprite: AnimatedSprite2D
+@export var playerSprite: AnimatedSprite2D:
+	set(value):
+		playerSprite = value
+		notify_property_list_changed()
 ## The player collider.
 @export var playerCollider: CollisionShape2D
 ## ALERT Only for debug.
@@ -124,9 +127,7 @@ func _get_property_list() -> Array:
 		"usage": PROPERTY_USAGE_GROUP,
 		"hint_string": "input"
 	})
-	InputMap.load_from_project_settings()
-	var commands: PackedStringArray = _get_commands()
-	for command in commands:
+	for command in  _get_commands():
 		properties.append({
 			"name": "input" + command,
 			"type": TYPE_STRING,
@@ -146,12 +147,15 @@ func _get_property_list() -> Array:
 		"usage": PROPERTY_USAGE_DEFAULT
 	})
 	for animation in _get_animations():
+		var animationList: PackedStringArray = []
+		if playerSprite and playerSprite.sprite_frames:
+			animationList = playerSprite.sprite_frames.get_animation_names()
 		properties.append({
 			"name": "animation" + animation,
 			"type": TYPE_STRING,
 			"usage": PROPERTY_USAGE_DEFAULT,
 			"hint": PROPERTY_HINT_ENUM,
-			"hint_string": ",".join(playerSprite.sprite_frames.get_animation_names()),
+			"hint_string": ",".join(animationList),
 		})
 	return properties
 
@@ -159,7 +163,7 @@ func _get_property_list() -> Array:
 func _get_commands() -> PackedStringArray:
 	var commands: PackedStringArray = ["left", "right", "up", "down", "jump", "run"]
 	for movement in specialMovements:
-		if movement:
+		if movement and movement.has_variable("requiredCommands"):
 			commands.append_array(movement.requiredCommands)
 	for key in inputKeys.keys():
 		if key not in commands:
@@ -170,7 +174,7 @@ func _get_commands() -> PackedStringArray:
 func _get_animations() -> PackedStringArray:
 	var animationList: PackedStringArray = ["idle", "walk", "jump", "run", "falling"]
 	for movement in specialMovements:
-		if movement:
+		if movement and movement.has_variable("requiredAnimations"):
 			animationList.append_array(movement.requiredAnimations)
 	if animationCustomFlip:
 		var newAnimations: PackedStringArray = []

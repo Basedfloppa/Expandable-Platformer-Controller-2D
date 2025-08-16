@@ -120,6 +120,7 @@ func _property_get_revert(property: StringName):
 
 ## Populates editor.
 func _get_property_list() -> Array:
+	InputMap.load_from_project_settings()
 	var properties: Array = []
 	properties.append({
 		"name": "Input",
